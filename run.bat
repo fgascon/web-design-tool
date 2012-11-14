@@ -1,0 +1,1 @@
+supervisor -w server -- server/server.js -p 3000
