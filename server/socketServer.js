@@ -9,6 +9,10 @@ function serverPathToClientPath(serverPath){
 		return serverPath;
 }
 
+var states = {
+	view:'wireframe',
+};
+
 module.exports = function(socket,mediator){
 	
 	socket.on('watch',function(dirname){
@@ -24,6 +28,12 @@ module.exports = function(socket,mediator){
 			});
 		});
 		
+	});
+	
+	socket.on('changeStates',function(changes){
+		for(var stateName in changes){
+			states[stateName] = changes[stateName];
+		}
 	});
 	
 };
